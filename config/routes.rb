@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :geolocations, only: [:index, :destroy, :update] do
+    collection do
+      post "/geolocation", to: "geolocations#getGeolocation"
+    end
+  end
 end
